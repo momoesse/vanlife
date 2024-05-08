@@ -5,14 +5,17 @@ header {
 .nav--container {
   display: flex;
   justify-content: right;
+  color: black;
 }
 
-ul {
-  list-style-type: none;
-}
-
-li {
+.nav--container li {
+  font-weight: 600;
+  color: #4D4D4D;
   display: inline;
+}
+
+.nav--container ul {
+  list-style-type: none;
 }
 
 a {
@@ -46,5 +49,33 @@ button {
   height: 40px;
   margin: 0;
   padding: 10px 16px;
+}
+
+.vans--container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-direction: row;
+  padding: 40px;
+}
+
+@media (max-width: 800px) {
+  .vans--container {
+    flex-direction: column;
+  }
+}
+
+.van--container {
+  padding-right: 40px;
+  padding-bottom: 40px;
+}
+
+.van--container img {
+  border-radius: 5%;
+  max-width: 300px;
+}
+
+.van--type {
+
 }
 
