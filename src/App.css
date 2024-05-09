@@ -8,14 +8,10 @@ header {
   color: black;
 }
 
-.nav--container li {
+.nav--container a {
   font-weight: 600;
   color: #4D4D4D;
   display: inline;
-}
-
-.nav--container ul {
-  list-style-type: none;
 }
 
 a {
@@ -75,7 +71,17 @@ button {
   max-width: 300px;
 }
 
-.van--type {
+/* HOST COMPONENT */
+.nav--host a {
+  text-decoration: none;
+  color: #4D4D4D;
+  padding: 5px 20px;
+  font-weight: 500;
+}
 
+.nav--host a:hover {
+  text-decoration: underline;
+  color: #161616;
+  font-weight: 600;
 }
 

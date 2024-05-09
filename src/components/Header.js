@@ -5,11 +5,10 @@ export default function Header() {
     return (
         <header>
             <nav className="nav--container">
-                <ul>
-                    <li><Link to="/">#VANLIFE</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li><Link to="/vans">Vans</Link></li>
-                </ul>
+                <Link to="/">#VANLIFE</Link>
+                <Link to="/host">Host</Link>
+                <Link to="/about">About</Link>
+                <Link to="/vans">Vans</Link>
             </nav>
         </header>
     )
