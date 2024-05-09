@@ -71,7 +71,7 @@ button {
   max-width: 300px;
 }
 
-/* HOST COMPONENT */
+
 .nav--host a {
   text-decoration: none;
   color: #4D4D4D;
@@ -79,9 +79,31 @@ button {
   font-weight: 500;
 }
 
-.nav--host a:hover {
+.nav--host a:hover, .nav--container a:hover  {
   text-decoration: underline;
   color: #161616;
   font-weight: 600;
 }
 
+.nav--container a:hover {
+  font-weight: 700 !important;
+}
+
+/* FOOTER COMPONENT */
+footer {
+  background-color: #4D4D4D;
+  color: white;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link--decoration {
+  text-decoration: underline;
+  color: red;
+}
