@@ -14,7 +14,7 @@ export default function HostVanDetail() {
 
     return (
         <div>
-            <Link to="../vans" className="back--button">&larr; Back to all vans</Link>
+            <Link to=".." relative="path" className="back--button">&larr; Back to all vans</Link>
             {currentVan ?
                 <div key={currentVan[0].id} className="host-van--container">
                     <img src={currentVan[0].imageUrl} />
