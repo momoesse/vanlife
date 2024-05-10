@@ -1,5 +1,6 @@
-header {
-  background-color: #FFE8D6;
+body {
+  padding: 25px;
+  background-color: #FFF7ED;
 }
 
 .nav--container {
@@ -106,4 +107,37 @@ footer {
 .link--decoration {
   text-decoration: underline;
   color: red;
+}
+
+.host-van--container {
+  display: flex;
+  flex-direction: row;
+  background-color:white;
+  padding: 25px;
+  margin: 25px;
+}
+
+.host-van--container img {
+  border-radius: 5%;
+  max-width: 150px;
+}
+
+.badge {
+  background-color:orange;
+  color: white;
+  padding: 4px 8px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.back--button {
+  display: block;
+  color: black;
+  text-decoration: none;
+  margin-top: 60px;
+  margin-left: 26px;
+}
+
+.back--button:hover {
+  text-decoration: underline;
 }
