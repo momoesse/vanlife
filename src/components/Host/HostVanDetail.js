@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, NavLink, Outlet} from "react-router-dom";
 
 export default function HostVanDetail() {
     const { id } = useParams();
@@ -12,17 +12,31 @@ export default function HostVanDetail() {
         setCurrentVan(selectedVan)
     }, [id])
 
+    const activeStyle = {
+        fontWeight: "bold",
+        textDecoration: "underline",
+        color: "#161616"
+    }
+
     return (
         <div>
             <Link to=".." relative="path" className="back--button">&larr; Back to all vans</Link>
             {currentVan ?
-                <div key={currentVan[0].id} className="host-van--container">
-                    <img src={currentVan[0].imageUrl} />
-                    <div>
-                        <p><span className="badge">{currentVan[0].type}</span></p>
-                        <p>{currentVan[0].name}</p>
-                        <p>€{currentVan[0].price}/day</p>
+                <div>
+                    <div key={currentVan[0].id} className="host-van--container">
+                        <img src={currentVan[0].imageUrl} />
+                        <div>
+                            <p><span className="badge">{currentVan[0].type}</span></p>
+                            <p>{currentVan[0].name}</p>
+                            <p>€{currentVan[0].price}/day</p>
+                        </div>
                     </div>
+                    <nav className="nav--host">
+                        <NavLink end style={ ({isActive}) => isActive ? activeStyle : null} to=".">Details</NavLink>
+                        <NavLink style={ ({isActive}) => isActive ? activeStyle : null} to="pricing">Pricing</NavLink>
+                        <NavLink style={ ({isActive}) => isActive ? activeStyle : null} to="photos">Photos</NavLink>
+                    </nav>
+                    <Outlet />
                 </div>
                 : <h3>Loading data....</h3>}
         </div>
