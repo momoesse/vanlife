@@ -141,3 +141,16 @@ footer {
 .back--button:hover {
   text-decoration: underline;
 }
+
+.host--van--info p {
+  font-weight: bold;
+}
+
+.host--van--info span {
+  font-weight: normal;
+}
+
+.host--van--photos img {
+  border-radius: 5%;
+  max-width: 300px;
+}
