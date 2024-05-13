@@ -14,7 +14,8 @@ export default function Vans() {
 
     const uniqueTypes = [...new Set(allVans.map((el) => el.type))];
     const filterBar = uniqueTypes.map(el => 
-        <Link to={`?type=${el}`}><span className="badge">{el}</span></Link>
+        // <button onClick={ () => setSearchParams(`?type=${el}`)}>{el}</button>
+        <button onClick={ () => setSearchParams( { type: `${el}`} )}>{el}</button>
     )
 
     const typeFilter = searchParams.get("type");
@@ -41,7 +42,7 @@ export default function Vans() {
             <h2>Explore our van options</h2>
             <div>
                 {filterBar}
-                <Link to=".">Clear filters</Link>
+                <button onClick={ () => setSearchParams({})}>Clear filters</button>
             </div>
             <div className="vans--container">
                 {elementsToDisplay}
