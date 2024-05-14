@@ -12,10 +12,19 @@ export default function Vans() {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
+    function generateNewSearchParams(key, value) {
+        const newSearchParams = new URLSearchParams(searchParams);
+        if (value === null) {
+            newSearchParams.delete(key);
+        } else {
+            newSearchParams.set(key, value)
+        }
+        return `?${newSearchParams.toString()}`;
+    }
+
     const uniqueTypes = [...new Set(allVans.map((el) => el.type))];
     const filterBar = uniqueTypes.map(el => 
-        // <button onClick={ () => setSearchParams(`?type=${el}`)}>{el}</button>
-        <button onClick={ () => setSearchParams( { type: `${el}`} )}>{el}</button>
+        <Link to={generateNewSearchParams("type", `${el}`)}>{el}</Link>
     )
 
     const typeFilter = searchParams.get("type");
@@ -42,7 +51,7 @@ export default function Vans() {
             <h2>Explore our van options</h2>
             <div className="filter-bar--vans">
                 {filterBar}
-                <button onClick={ () => setSearchParams({})}>Clear filters</button>
+                <Link to={generateNewSearchParams("type", null)}>Clear filters</Link>
             </div>
             <div className="vans--container">
                 {elementsToDisplay}
