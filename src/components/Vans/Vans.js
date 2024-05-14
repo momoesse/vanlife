@@ -40,7 +40,7 @@ export default function Vans() {
     return (
         <div>
             <h2>Explore our van options</h2>
-            <div>
+            <div className="filter-bar--vans">
                 {filterBar}
                 <button onClick={ () => setSearchParams({})}>Clear filters</button>
             </div>
