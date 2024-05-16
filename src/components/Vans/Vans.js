@@ -38,7 +38,8 @@ export default function Vans() {
         allVans.filter( el => el.type === typeFilter) : allVans;
 
     const elementsToDisplay = displayedVans.map(el =>
-        <Link to={`./${el.id}`} state={{ search: `?${searchParams.toString()}` }} aria-label={`View details for ${el.name}, priced at ${el.price} per day`}>
+        <Link to={`./${el.id}`} state={{ search: `?${searchParams.toString()}`, type: typeFilter }} 
+            aria-label={`View details for ${el.name}, priced at ${el.price} per day`}>
             <div key={el.id} className="van--container">
                 <img src={el.imageUrl} alt={`Image of ${el.name}`} />
                 <div>

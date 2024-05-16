@@ -5,6 +5,7 @@ export default function VanDetail() {
     const params = useParams();
     const location = useLocation();
     const search = location.state?.search || "";
+    const type = location.state?.type || "all";
     console.log("This is the id of the selected van" + params.id);
 
     const [vanDetails, setVanDetails] = React.useState();
@@ -14,11 +15,9 @@ export default function VanDetail() {
             .then(data => setVanDetails(data.vans))
     }, [params.id])
 
-    console.log(vanDetails);
-
     return ( 
         <div>
-            <Link to={`..${search}`} relative="path" className="back--button">&larr; Back to all vans</Link>
+            <Link to={`..${search}`} relative="path" className="back--button">&larr; Back to {type} vans</Link>
             {vanDetails ? (
                 <div key={vanDetails.id} className="van--container">
                     <img src={vanDetails.imageUrl} alt={`Image of ${vanDetails.name}`} />
