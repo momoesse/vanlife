@@ -12,20 +12,33 @@ export default function Vans() {
 
     const [searchParams, setSearchParams] = useSearchParams();
 
-    const uniqueTypes = [...new Set(allVans.map((el) => el.type))];
-    const filterBar = uniqueTypes.map(el => 
-        // <button onClick={ () => setSearchParams(`?type=${el}`)}>{el}</button>
-        <button onClick={ () => setSearchParams( { type: `${el}`} )}>{el}</button>
-    )
+    function handleFilterChange(key, value) {
+        setSearchParams(prevParams => {
+            if (value === null) {
+                prevParams.delete(key);
+            } else {
+                prevParams.set(key, value);
+            }
+            return prevParams;
+        })
+    }
 
     const typeFilter = searchParams.get("type");
     console.log(typeFilter);
+
+    const uniqueTypes = [...new Set(allVans.map((el) => el.type))];
+    const filterBar = uniqueTypes.map(el => 
+        // <button onClick={ () => setSearchParams(`?type=${el}`)}>{el}</button>
+        <button onClick={ () => handleFilterChange(`type`, `${el}`)}>{el}</button>
+    )
+
+    
 
     const displayedVans = typeFilter ? 
         allVans.filter( el => el.type === typeFilter) : allVans;
 
     const elementsToDisplay = displayedVans.map(el =>
-        <Link to={`/vans/${el.id}`} aria-label={`View details for ${el.name}, priced at ${el.price} per day`}>
+        <Link to={`./${el.id}`} state={{ search: `?${searchParams.toString()}` }} aria-label={`View details for ${el.name}, priced at ${el.price} per day`}>
             <div key={el.id} className="van--container">
                 <img src={el.imageUrl} alt={`Image of ${el.name}`} />
                 <div>
@@ -42,7 +55,7 @@ export default function Vans() {
             <h2>Explore our van options</h2>
             <div className="filter-bar--vans">
                 {filterBar}
-                <button onClick={ () => setSearchParams({})}>Clear filters</button>
+                {typeFilter && <button onClick={ () => handleFilterChange("type", null)}>Clear filters</button>}
             </div>
             <div className="vans--container">
                 {elementsToDisplay}
