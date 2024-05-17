@@ -14,6 +14,7 @@ import Reviews from "./components/Host/Reviews.js";
 import About from "./components/About.js";
 import Vans from "./components/Vans/Vans.js";
 import VanDetail from "./components/Vans/VanDetail.js";
+import Login from "./components/Login.js";
 import NotFound from "./components/NotFound.js";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
           <Route path="about" element={<About />} />
           <Route path="vans" element={<Vans />} />
           <Route path="vans/:id" element={<VanDetail />} />
+          <Route path="login" element={<Login />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
