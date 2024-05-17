@@ -1,28 +1,14 @@
 import React from "react";
-import { useSearchParams, Link } from "react-router-dom";
+import { useSearchParams, useLoaderData, Link } from "react-router-dom";
 import { getVans } from "../../api.js";
 
+export function loader() {
+    return getVans();
+}
+
 export default function Vans() {
-    const [allVans, setAllVans] = React.useState([]);
-    const [loading, setLoading] = React.useState(false);
-    const [error, setError] = React.useState(null);
-
-    React.useEffect(() => {
-        async function loadVans() {
-            setLoading(true);
-            try {
-                const data = await getVans();
-                setAllVans(data);
-            } catch(error) {
-                setError(error);
-            } finally {
-                setLoading(false);
-            }   
-        }
-        loadVans()
-    }, [])
-
     const [searchParams, setSearchParams] = useSearchParams();
+    const allVans = useLoaderData();
 
     function handleFilterChange(key, value) {
         setSearchParams(prevParams => {
@@ -36,7 +22,6 @@ export default function Vans() {
     }
 
     const typeFilter = searchParams.get("type");
-    console.log(typeFilter);
 
     const uniqueTypes = [...new Set(allVans.map((el) => el.type))];
     const filterBar = uniqueTypes.map(el =>
@@ -60,14 +45,6 @@ export default function Vans() {
             </div>
         </Link>
     )
-
-    if (loading) {
-        return <h2 aria-live="polite">Loading...</h2>
-    }
-
-    if (error) {
-        return <h2 aria-live="assertive">An error occured: {error.message}</h2>
-    }
 
     return (
         <div>
