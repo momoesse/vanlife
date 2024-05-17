@@ -25,7 +25,7 @@ export default function HostVanDetail() {
                 <div>
                     <div key={currentVan[0].id} className="host-van--container">
                         <img src={currentVan[0].imageUrl} />
-                        <div>
+                        <div className="host-van--info">
                             <p><span className="badge">{currentVan[0].type}</span></p>
                             <p>{currentVan[0].name}</p>
                             <p>€{currentVan[0].price}/day</p>

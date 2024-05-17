@@ -33,7 +33,7 @@ export default function HostVans() {
             <Link to={`./${el.id}`} aria-label={`View details for ${el.name}, priced at ${el.price} per day`}>
                 <div key={el.id} className="host-van--container">
                     <img src={el.imageUrl} />
-                    <div>
+                    <div className="host-van--info">
                         <p>{el.name}</p>
                         <p>€{el.price}/day</p>
                     </div>

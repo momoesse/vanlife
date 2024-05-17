@@ -24,6 +24,7 @@ a {
   background: url("./images/homepage--photo.png") no-repeat center center;
   height: 100vh;
   padding: 45px 23px;
+  margin: 50px 0 100px 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -39,8 +40,12 @@ a {
   line-height: 24px;
 }
 
+.home--container a {
+  color: white;
+}
+
 button {
-  background-color: #EA4C89;
+  background-color:darkolivegreen;
   border-radius: 8px;
   border-style: none;
   height: 40px;
@@ -122,6 +127,10 @@ footer {
   max-width: 150px;
 }
 
+.host-van--info {
+  padding-left: 20px;
+}
+
 .badge {
   background-color:orange;
   color: white;
@@ -153,6 +162,7 @@ footer {
 .host--van--photos img {
   border-radius: 5%;
   max-width: 300px;
+  margin: 20px;
 }
 
 .filter-bar--vans button {
