@@ -14,6 +14,9 @@ export default function Header() {
                 <NavLink style={ ({isActive}) => isActive ? activeStyle : null} to="/host">Host</NavLink>
                 <NavLink style={ ({isActive}) => isActive ? activeStyle : null} to="/about">About</NavLink>
                 <NavLink style={ ({isActive}) => isActive ? activeStyle : null} to="/vans">Vans</NavLink>
+                <Link to="/login" className="login--link">
+                    Login
+                </Link>
             </nav>
         </header>
     )
