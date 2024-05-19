@@ -7,12 +7,7 @@ export function loader() {
 }
 
 export default function HostVans() {
-    //const [hostVans, setHostVans] = React.useState([]);
     const hostVans = useLoaderData();
-
-    React.useEffect(() => {
-        localStorage.setItem("vans", JSON.stringify(hostVans));
-    }, [hostVans])
 
     console.log(hostVans);
 
@@ -33,7 +28,7 @@ export default function HostVans() {
     return (
         <div>
             <h2>Your listed vans</h2>
-            {hostVans ? elementToDisplay : <h3>Loading data....</h3>}
+            {elementToDisplay}
         </div>
     )
 }
