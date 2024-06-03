@@ -1,5 +1,5 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { loginUser } from "../api.js";
 
 export function loader( {request} ) {
@@ -16,13 +16,14 @@ export default function Login() {
     const [loginError, setLoginError] = React.useState(null);
 
     const message = useLoaderData();
+    const navigate = useNavigate();
 
     function handleSubmit(event) {
         event.preventDefault();
         setLoginStatus("submitting");
         setLoginError(null);
         loginUser(loginData)
-            .then(data =>  console.log(data))
+            .then(data =>  navigate("/host/vans", { replace: true }))
             .catch(error => setLoginError(error))
             .finally( () => setLoginStatus("idle"))
     }
