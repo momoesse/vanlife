@@ -28,6 +28,7 @@ This project has been developed as part of the [Learn React Router 6 - Scrimba](
 - **useLocation**: For accessing location object
 - **useSearchParams**: For working with URL query strings
 - **useRouteError**: For handling route errors
+- **useNavigate**: For navigating between routes
 - **Route**: For defining routes
 - **BrowserRouter**: For wrapping the app to use React Router
 - **RouterProvider**: For providing router configuration
