@@ -21,10 +21,11 @@ import Reviews from "./components/Host/Reviews.js";
 import About from "./components/About.js";
 import Vans, { loader as vansLoader } from "./components/Vans/Vans.js";
 import VanDetail, { loader as vanDetailLoader } from "./components/Vans/VanDetail.js";
-import Login, { loader as loginLoader } from "./components/Login.js";
+import Login, { action as loginAction } from "./components/Login.js";
 import NotFound from "./components/NotFound.js";
 import Error from "./components/Error.js";
 import { requireAuth } from "./utils.js";
+localStorage.removeItem("loggedIn")
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route element={<Layout />} errorElement={<Error />}>
@@ -71,7 +72,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="about" element={<About />} />
     <Route path="vans" element={<Vans />} loader={vansLoader} />
     <Route path="vans/:id" element={<VanDetail />} loader={vanDetailLoader} />
-    <Route path="login" element={<Login />} loader={loginLoader} />
+    <Route path="login" element={<Login />} action={loginAction} />
     <Route path="*" element={<NotFound />} />
   </Route>
 ))

@@ -1,54 +1,46 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData, Form, redirect, useActionData, useNavigation } from "react-router-dom";
 import { loginUser } from "../api.js";
 
-export function loader( {request} ) {
+export function loader({ request }) {
     return new URL(request.url).searchParams.get("message");
 }
 
+export async function action({ request }) {
+    const formData = await request.formData();
+    const email = formData.get("email");
+    const password = formData.get("password");
+    try {
+        const data = await loginUser({ email, password });
+        localStorage.setItem("loggedIn", true);
+        const response = redirect("/host")
+        // workaround for redirect issues when working with MirageJS and React Router 
+        response.body = true
+        return response
+    } catch (error) {
+        return null
+    }
+}
+
 export default function Login() {
-    const [loginData, setLoginData] = React.useState({
-        email: "",
-        password: ""
-    })
-
-    const [loginStatus, setLoginStatus] = React.useState("idle");
-    const [loginError, setLoginError] = React.useState(null);
-
+    const errorMessage = useActionData();
+    const navigation = useNavigation();
     const message = useLoaderData();
-    const navigate = useNavigate();
-
-    function handleSubmit(event) {
-        event.preventDefault();
-        setLoginStatus("submitting");
-        setLoginError(null);
-        loginUser(loginData)
-            .then(data =>  navigate("/host/vans", { replace: true }))
-            .catch(error => setLoginError(error))
-            .finally( () => setLoginStatus("idle"))
-    }
-
-    function handleChange(event) {
-        const { name, value } = event.target;
-        setLoginData(prevState => ({
-            ...prevState, [name] : value
-        }))
-    }
 
     return (
         <div className="login--container">
             <h2>Sign in to your account</h2>
-            { message && <h3 className="red">{message}</h3>} 
-            { loginError && <h3 className="red">{loginError.message}</h3>}
-            <form onSubmit={handleSubmit} className="login--form">
+            {message && <h3 className="red">{message}</h3>}
+            {errorMessage?.email && <h3 className="red">{errorMessage?.email}</h3>}
+            <Form method="post" className="login--form" replace>
                 <label>Enter your email address:
-                    <input name="email" value={loginData.email} type="email" onChange={handleChange} />
+                    <input name="email" type="email" />
                 </label>
                 <label>Enter your password:
-                    <input name="password" value={loginData.password} type="password" onChange={handleChange} />
+                    <input name="password" type="password" />
                 </label>
-                <button disabled={loginStatus === "submitting"}>{loginStatus === "submitting" ? "Logging in..." : "Log in"}</button>
-            </form>
+                <button disabled={navigation.state === "submitting"}>{navigation.state === "submitting" ? "Logging in" : "Log in"}</button>
+            </Form>
         </div>
     )
 }
