@@ -2,6 +2,7 @@
 
 Welcome to the VANLIFE Application, a comprehensive app for renting travel vans for your next road trip adventure 🚐 
 This project has been developed as part of the [Learn React Router 6 - Scrimba](https://scrimba.com/learn/reactrouter6) course and it was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). 
+The project is a work in progress.
 
 # Project Overview
 
@@ -22,6 +23,10 @@ This project has been developed as part of the [Learn React Router 6 - Scrimba](
 - **NavLink**: For navigation links with active styles
 - **Link**: For regular navigation links
 - **Outlet**: For rendering child routes
+- **Form**: For handling form submissions and facilitating navigation within the application
+- **Route**: For defining routes
+- **BrowserRouter**: For wrapping the app to use React Router
+- **RouterProvider**: For providing router configuration
 - **useParams**: For accessing URL parameters
 - **useLoaderData**: For loading data in routes
 - **useOutletContext**: For passing context to nested routes
@@ -29,10 +34,8 @@ This project has been developed as part of the [Learn React Router 6 - Scrimba](
 - **useSearchParams**: For working with URL query strings
 - **useRouteError**: For handling route errors
 - **useNavigate**: For navigating between routes
-- **Route**: For defining routes
-- **BrowserRouter**: For wrapping the app to use React Router
-- **RouterProvider**: For providing router configuration
-  
+- **useNavigation**: For accessing `navigation` object
+
 ## Installation
 To get a local copy up and running, follow these simple steps:
 
