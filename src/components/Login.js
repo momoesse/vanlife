@@ -10,10 +10,11 @@ export async function action({ request }) {
     const formData = await request.formData();
     const email = formData.get("email");
     const password = formData.get("password");
+    const path = new URL(request.url).searchParams.get("redirectTo") || "/host";
     try {
         const data = await loginUser({ email, password });
         localStorage.setItem("loggedIn", true);
-        const response = redirect("/host")
+        const response = redirect(path);
         // workaround for redirect issues when working with MirageJS and React Router 
         response.body = true
         return response
