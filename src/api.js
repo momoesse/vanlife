@@ -1,5 +1,6 @@
-export async function getVans() {
-    const res = await fetch("/api/vans");
+export async function getVans(id) {
+    const sUrl = id ? `/api/vans/${id}` : "/api/vans";
+    const res = await fetch(sUrl);
     if (!res.ok) {
         throw {
             message: "Failed to fetch Vans",
@@ -11,8 +12,9 @@ export async function getVans() {
     return data.vans
 }
 
-export async function getHostVans() {
-    const res = await fetch("/api/host/vans");
+export async function getHostVans(id) {
+    const sUrl = id ? `/api/host/vans/${id}` : "/api/host/vans";
+    const res = await fetch(sUrl);
     if (!res.ok) {
         throw {
             message: "Failed to fetch Host Vans",
@@ -22,4 +24,20 @@ export async function getHostVans() {
     }
     const data = await res.json();
     return data.vans
+}
+
+export async function loginUser(creds) {
+    const res = await fetch("/api/login",
+        { method: "post", body: JSON.stringify(creds) }
+    )
+
+    if (!res.ok) {
+        throw {
+            message: data.message,
+            statusText: res.statusText,
+            status: res.status
+        }
+    }
+    const data = await res.json();
+    return data
 }
