@@ -6,9 +6,9 @@ export default function HostVanInfo() {
 
     return (
         <section className="host--van--info">
-            <p>Name: <span>{currentVan[0].name}</span></p>
-            <p>Type: <span>{currentVan[0].type}</span></p>
-            <p>Description: <span>{currentVan[0].description}</span></p>
+            <p>Name: <span>{currentVan.name}</span></p>
+            <p>Type: <span>{currentVan.type}</span></p>
+            <p>Description: <span>{currentVan.description}</span></p>
         </section>
     )
 }

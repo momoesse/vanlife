@@ -1,6 +1,6 @@
 import React, { Suspense } from "react";
 import { Link, useLoaderData, defer, Await } from "react-router-dom";
-import { getHostVans } from "../../api.js";
+import { getHostVans } from "../../firebase.js";
 import { requireAuth } from "../../utils.js";
 
 export async function loader({ request }) {
