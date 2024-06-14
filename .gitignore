@@ -25,3 +25,5 @@ yarn-error.log*
 #
 dist/
 *.env
+
+firebase.js
