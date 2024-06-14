@@ -10,7 +10,7 @@ import {
 import Layout from "./components/Layout.js";
 import Home from "./components/Home.js";
 import Host from "./components/Host/Host.js";
-import Dashboard from "./components/Host/Dashboard.js";
+import Dashboard, { loader as dashboardLoader } from "./components/Host/Dashboard.js";
 import Income from "./components/Host/Income.js";
 import HostVans, { loader as hostVansLoader } from "./components/Host/HostVans.js";
 import HostVanDetail, { loader as hostVanDetailLoader } from "./components/Host/HostVanDetail.js";
@@ -33,9 +33,7 @@ const router = createBrowserRouter(createRoutesFromElements(
     <Route path="host" element={<Host />}>
       <Route index 
         element={<Dashboard />} 
-        loader={ async () => {
-          return null
-        }} />
+        loader={dashboardLoader} />
       <Route path="income" 
         element={<Income />} 
         loader={ async () => {

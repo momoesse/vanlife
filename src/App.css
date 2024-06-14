@@ -192,3 +192,31 @@ header img {
 .red {
   color: red;
 }
+
+.review--info {
+  display: flex;
+}
+
+.review--info .name {
+  color:#161616;
+  font-weight: 500;
+  margin-right: 10px;
+}
+
+.review--info .date {
+  color:#8C8C8C;
+}
+
+.dashboard {
+  display: flex;
+  justify-content: space-between;
+}
+
+.earnings {
+  background-color: #FFEAD0;
+  
+}
+
+.reviews {
+  background-color: #FFDDB2;
+}
