@@ -210,13 +210,18 @@ header img {
 .dashboard {
   display: flex;
   justify-content: space-between;
+  padding: 25px;
 }
 
 .earnings {
   background-color: #FFEAD0;
-  
+  margin-top: 25px;
 }
 
 .reviews {
   background-color: #FFDDB2;
+}
+
+.bold {
+  font-weight: bold;
 }

@@ -18,6 +18,7 @@ export default function Reviews() {
             id: "2"
         }
     ]
+
     return (
         <>
             <h2>Your reviews</h2>

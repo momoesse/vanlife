@@ -13,8 +13,8 @@ export default function Income() {
             <h3>Transactions ({transactionsData.length})</h3>
             {transactionsData.map( el => (
                 <div key={el.id} className="dashboard host-van--container">
-                    <p>{el.amount}</p>
-                    <p>{el.date}</p>
+                    <p><span className="bold">Amount: </span>{el.amount}</p>
+                    <p><span className="bold">Date: </span>{el.date}</p>
                 </div>
             ))}
         </div>
